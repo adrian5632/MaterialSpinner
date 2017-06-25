@@ -62,6 +62,7 @@ public class MaterialSpinner extends AppCompatSpinner implements ValueAnimator.A
     private int floatingLabelBottomSpacing;
     private int floatingLabelInsideSpacing;
     private int rightLeftSpinnerPadding;
+    private int spinnerArrowPaddingEnd;
     private int minContentHeight;
 
     //Properties about Error Label
@@ -265,6 +266,7 @@ public class MaterialSpinner extends AppCompatSpinner implements ValueAnimator.A
         floatingLabelTopSpacing = getResources().getDimensionPixelSize(R.dimen.floating_label_top_spacing);
         floatingLabelBottomSpacing = getResources().getDimensionPixelSize(R.dimen.floating_label_bottom_spacing);
         rightLeftSpinnerPadding = alignLabels ? getResources().getDimensionPixelSize(R.dimen.right_left_spinner_padding) : 0;
+        spinnerArrowPaddingEnd = getResources().getDimensionPixelSize(R.dimen.spinner_arrow_padding_end);
         floatingLabelInsideSpacing = getResources().getDimensionPixelSize(R.dimen.floating_label_inside_spacing);
         errorLabelSpacing = (int) getResources().getDimension(R.dimen.error_label_spacing);
         minContentHeight = (int) getResources().getDimension(R.dimen.min_content_height);
@@ -455,7 +457,7 @@ public class MaterialSpinner extends AppCompatSpinner implements ValueAnimator.A
 			}
         }
 
-        drawSelector(canvas, getWidth() - rightLeftSpinnerPadding, getPaddingTop() + dpToPx(8));
+        drawSelector(canvas, getWidth() - rightLeftSpinnerPadding - spinnerArrowPaddingEnd, getPaddingTop() + dpToPx(8));
 
 
     }
