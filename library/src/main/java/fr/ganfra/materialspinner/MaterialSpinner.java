@@ -77,6 +77,7 @@ public class MaterialSpinner extends AppCompatSpinner implements ValueAnimator.A
     private ObjectAnimator floatingLabelAnimator;
     private boolean isSelected;
     private boolean floatingLabelVisible;
+    private boolean floatingLabelAlwaysShown;
     private int baseAlpha;
 
 
@@ -166,6 +167,7 @@ public class MaterialSpinner extends AppCompatSpinner implements ValueAnimator.A
         error = array.getString(R.styleable.MaterialSpinner_ms_error);
         hint = array.getString(R.styleable.MaterialSpinner_ms_hint);
         hintColor = array.getColor(R.styleable.MaterialSpinner_ms_hintColor, baseColor);
+        floatingLabelAlwaysShown = array.getBoolean(R.styleable.MaterialSpinner_ms_floatingLabelAlwaysShown, false);
         floatingLabelText = array.getString(R.styleable.MaterialSpinner_ms_floatingLabelText);
         floatingLabelColor = array.getColor(R.styleable.MaterialSpinner_ms_floatingLabelColor, baseColor);
         multiline = array.getBoolean(R.styleable.MaterialSpinner_ms_multiline, true);
@@ -513,9 +515,9 @@ public class MaterialSpinner extends AppCompatSpinner implements ValueAnimator.A
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                 if (hint != null || floatingLabelText != null) {
-                    if (!floatingLabelVisible && position != 0) {
+                    if (!floatingLabelVisible && (position != 0 || floatingLabelAlwaysShown)) {
                         showFloatingLabel();
-                    } else if (floatingLabelVisible && position == 0) {
+                    } else if (floatingLabelVisible && position == 0 && !floatingLabelAlwaysShown) {
                         hideFloatingLabel();
                     }
                 }
