@@ -373,9 +373,8 @@ public class MaterialSpinner extends AppCompatSpinner implements ValueAnimator.A
     private int prepareBottomPadding() {
 
         int targetNbLines = minNbErrorLines;
-        int width = getWidth() - getPaddingRight() - getPaddingLeft();
-        if (error != null && width > 0) {
-            staticLayout = new StaticLayout(error, textPaint, width, Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, true);
+        if (error != null) {
+            staticLayout = new StaticLayout(error, textPaint, getWidth() - getPaddingRight() - getPaddingLeft(), Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, true);
             int nbErrorLines = staticLayout.getLineCount();
             targetNbLines = Math.max(minNbErrorLines, nbErrorLines);
         }
